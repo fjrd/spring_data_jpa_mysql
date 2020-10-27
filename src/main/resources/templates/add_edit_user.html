@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add new User</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h2>Add new User</h2>
+
+<form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    <p>
+        <input type="text" th:field="*{name}" id="name" placeholder="Name">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </p>
+
+    <p>
+        <input type="text" th:field="*{email}" id="email" placeholder="Email">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    </p>
+
+    <p>
+        <input type="submit" value="Ok">
+        <button type="reset" value="Reset">Reset</button>
+    </p>
+
+    <p>
+        <a href="http://localhost:8080/users">Back to Users list</a>
+    </p>
+    <input type="hidden" id="id" th:field="*{id}">
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Users</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h2>List of users</h2>
+
+<a href="http://localhost:8080/users/new">Add new User</a>
+<br>
+<br>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="2">Actions</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">Onions</td>
+        <td th:text="${user.name}">Onions</td>
+        <td th:text="${user.email}">2.41</td>
+        <td>
+            <form action="#" th:action="@{'users/{id}/edit'(id=${user.id})}" th:method="get" >
+                <input type="hidden" name="_method" value="edit" />
+                <button type="submit" id="submitEditButton">Edit</button>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{'users/{id}'(id=${user.id})}" th:method="post" >
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" id="submitDeleteButton">Delete</button>
+            </form>
+        </td>
+    <tr>
+</table>
+<br>
+<a href="http://localhost:8080/">Back to main page</a>
+</body>
+</html>
